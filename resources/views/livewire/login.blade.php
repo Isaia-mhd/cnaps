@@ -27,9 +27,15 @@
             </div>
 
             {{-- Password --}}
-            <div>
+            <div class="relative">
                 <label for="password" class="block text-sm font-medium text-gray-700 mb-1">Mot de passe</label>
-                <input type="password" name="password" id="password" required
+                @if ($eye)
+                    <i class="fa-solid fa-eye text-black absolute right-4 bottom-3 cursor-pointer" wire:click='viewPass'></i>
+                @else
+                    <i class="fa-solid fa-eye-slash text-black absolute right-4 bottom-3 cursor-pointer" wire:click='viewPass'></i>
+                @endif
+
+                <input type="{{ $eye ? 'password': 'text' }}" name="password" id="password" required
                     class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600 text-sm">
                 @error('password')
                     <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
@@ -40,7 +46,7 @@
             <div>
                 <button
                     class="w-full bg-blue-900 hover:bg-blue-950 cursor-pointer text-white py-2 rounded-lg font-semibold transition">
-                    Login
+                    Se connecter
                 </button>
             </div>
         </div>

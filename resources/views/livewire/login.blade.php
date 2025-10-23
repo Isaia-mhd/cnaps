@@ -1,0 +1,48 @@
+<div class="w-full min-h-screen flex justify-center items-center bg-primary">
+    {{-- Success is as dangerous as failure. --}}
+
+    <div class="w-full max-w-md mx-auto bg-secondary rounded-2xl shadow-lg p-8">
+        <div class="w-20 mx-auto h-20 rounded-full mb-6">
+            <img src="{{ asset('assets/logo.webp') }}" alt="logo" class="w-full h-full rounded-full">
+        </div>
+
+        {{-- Session Status --}}
+        @if (session('status'))
+            <div class="mb-4 text-sm text-green-600 text-center">
+                {{ session('status') }}
+            </div>
+        @endif
+
+        {{-- Login Form --}}
+        <div  class="space-y-5">
+
+            {{-- Email --}}
+            <div>
+                <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                <input type="email" name="email" id="email" required autofocus
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600 text-sm">
+                @error('email')
+                    <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                @enderror
+            </div>
+
+            {{-- Password --}}
+            <div>
+                <label for="password" class="block text-sm font-medium text-gray-700 mb-1">Mot de passe</label>
+                <input type="password" name="password" id="password" required
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600 text-sm">
+                @error('password')
+                    <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                @enderror
+            </div>
+
+            {{-- Submit Button --}}
+            <div>
+                <button
+                    class="w-full bg-blue-900 hover:bg-blue-950 cursor-pointer text-white py-2 rounded-lg font-semibold transition">
+                    Login
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

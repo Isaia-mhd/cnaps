@@ -7,11 +7,8 @@
         </div>
 
         {{-- Session Status --}}
-        @if (session('status'))
-            <div class="mb-4 text-sm text-green-600 text-center">
-                {{ session('status') }}
-            </div>
-        @endif
+        @include("components.success")
+        @include("components.error")
 
         {{-- Login Form --}}
         <div  class="space-y-5">
@@ -19,7 +16,7 @@
             {{-- Email --}}
             <div>
                 <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
-                <input type="email" name="email" id="email" required autofocus
+                <input type="email" wire:model="email" id="email" placeholder="johndoe@cnaps.com" wire:keydown.enter='authenticate'
                     class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600 text-sm">
                 @error('email')
                     <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
@@ -35,7 +32,7 @@
                     <i class="fa-solid fa-eye-slash text-black absolute right-4 bottom-3 cursor-pointer" wire:click='viewPass'></i>
                 @endif
 
-                <input type="{{ $eye ? 'password': 'text' }}" name="password" id="password" required
+                <input type="{{ $eye ? 'password': 'text' }}" wire:model="password" id="password" wire:keydown.enter='authenticate'
                     class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600 text-sm">
                 @error('password')
                     <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
@@ -44,7 +41,7 @@
 
             {{-- Submit Button --}}
             <div>
-                <button
+                <button wire:click='authenticate'
                     class="w-full bg-blue-900 hover:bg-blue-950 cursor-pointer text-white py-2 rounded-lg font-semibold transition">
                     Se connecter
                 </button>

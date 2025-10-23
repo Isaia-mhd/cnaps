@@ -16,6 +16,7 @@ return [
     'name' => env('APP_NAME', 'Laravel'),
 
     'admin' => [
+        'name' => env('NAME_ADMIN'),
         'email' => env('EMAIL_ADMIN'),
         'password' => env('PASSWORD_ADMIN')
     ],

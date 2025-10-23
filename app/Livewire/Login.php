@@ -36,7 +36,8 @@ class Login extends Component
         if ($admin && Hash::check($this->password, $admin->password)) {
             Auth::login($admin);
             session()->flash('success', 'Connexion reussie.');
-            $this->reset();
+            sleep(15);
+            return redirect()->route('dashboard');
         } else{
             session()->flash('error', 'Identifiants incorrect.');
             $this->reset();

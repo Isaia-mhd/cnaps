@@ -14,3 +14,7 @@
     --color-primary: #172554;
     --color-secondary: #F3F4F6;
 }
+
+body{
+    font-family: 'Poppins', sans-serif;
+}
